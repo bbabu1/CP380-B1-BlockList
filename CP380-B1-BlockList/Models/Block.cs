@@ -50,11 +50,11 @@ public void Mine(int difficulty)
 
        {
             string hashValidation = new String('C', difficulty); 
-            string hashedString = CalculateHas();  
+            string hashedString = CalculateHash();  
             while(hashedString.Substring(0, difficulty) != hashValidation) 
         {
                 Nonce++;                     
-                hashedString = CalculateHas();             
+                hashedString = CalculateHash();             
         }                                             
            
                  Hash = hashedString;
