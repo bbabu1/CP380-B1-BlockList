@@ -28,15 +28,14 @@ namespace CP380_B1_BlockList.Models
         // JSON serialisation:
         //   https://docs.microsoft.com/en-us/dotnet/standard/serialization/system-text-json-how-to?pivots=dotnet-5-0
         //
-        public string CalculateHash()
+
+        
+        
+public string CalculateHash()
         {
             var sha256 = SHA256.Create();
             var json = JsonSerializer.Serialize(Data);
-
-            //
-            // TODO
-            //
-            var inputString = $""; // TODO
+            var inputString = $"{TimeStamp.Date:yyyy-MM-dd hh:mm:ss tt}-{PreviousHash}-{Nonce}-{json}"; "
 
             var inputBytes = Encoding.ASCII.GetBytes(inputString);
             var outputBytes = sha256.ComputeHash(inputBytes);
@@ -44,9 +43,22 @@ namespace CP380_B1_BlockList.Models
             return Base64UrlEncoder.Encode(outputBytes);
         }
 
-        public void Mine(int difficulty)
+       
+        
+public void Mine(int difficulty)
+      
+
+       {
+            string hashValidation = new String('C', difficulty); 
+            string hashedString = CalculateHas();  
+            while(hashedString.Substring(0, difficulty) != hashValidation) 
         {
-            // TODO
-        }
-    }
+                Nonce++;                     
+                hashedString = CalculateHas();             
+        }                                             
+           
+                 Hash = hashedString;
+                    
+}
+}
 }
